@@ -46,3 +46,11 @@ This comprehensive course is designed to explore advanced aspects of frontend de
 - **Enhancing Performance**: With dynamic imports and lazy loading components and modules.
 
 This course aims to equip developers with the advanced skills needed to build sophisticated, scalable, and secure web applications using Next.js 13, emphasizing best practices for development and deployment.
+
+
+## 1. Setting up the project
+
+```
+npx create-next-app@latest
+
+```
