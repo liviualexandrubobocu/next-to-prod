@@ -1,5 +1,3 @@
-# next-to-prod
-
 # Next to Prod
 
 This comprehensive course is designed to explore advanced aspects of frontend development using Next.js 13, covering new features, rendering techniques, state management, security, end-to-end testing, project structure, best practices, and deployment strategies.
@@ -26,7 +24,6 @@ This comprehensive course is designed to explore advanced aspects of frontend de
 ### Module 4: Security in Next.js Applications
 - **Security Best Practices**: Specific to Next.js and frontend development.
 - **Implementing Secure Headers and Policies**: Content security, safe handling of cookies and tokens.
-- **Protecting Against Common Vulnerabilities**: XSS, CSRF, and more.
 
 ### Module 5: End-to-End Testing and CI/CD Integration
 - **Introduction to e2e Testing Frameworks**: E.g., Playwright.
