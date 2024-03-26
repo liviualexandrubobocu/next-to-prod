@@ -1,0 +1,48 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "projects": [
+          {
+            "id": 101,
+            "name": "Project Alpha",
+            "description": "Developing a new machine learning algorithm."
+          },
+          {
+            "id": 102,
+            "name": "Project Beta",
+            "description": "Creating a web application for online learning."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "projects": [
+          {
+            "id": 201,
+            "name": "Project Gamma",
+            "description": "Designing a new database architecture."
+          },
+          {
+            "id": 202,
+            "name": "Project Delta",
+            "description": "Developing a mobile app for fitness tracking."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "projects": [
+          {
+            "id": 301,
+            "name": "Project Epsilon",
+            "description": "Researching renewable energy sources."
+          }
+        ]
+      }
+    ]
+  }
+  
