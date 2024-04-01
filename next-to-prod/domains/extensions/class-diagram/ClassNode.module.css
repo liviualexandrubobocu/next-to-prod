@@ -1,0 +1,19 @@
+.classNode {
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: white;
+}
+
+.className {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+  
+.classAttributes, .classMethods {
+    margin-bottom: 5px;
+}
+  
+.classAttribute, .classMethod {
+    font-size: 0.9em;
+}
