@@ -14,7 +14,7 @@ const CreateTeam: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   const onSubmit = (data: IFormInput) => {
     console.log(data);
-    onClose(); // Close the modal after form submission
+    onClose();
   };
 
   return (

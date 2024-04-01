@@ -1,5 +1,6 @@
 'use client';
 
+import { useRFMappings } from '@/domains/mappings/state/reactFlowMappings';
 import React, { useCallback } from 'react';
 import ReactFlow, {
   MiniMap,
@@ -8,6 +9,7 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   addEdge,
+  Edge
 } from 'reactflow';
  
 import 'reactflow/dist/style.css';
@@ -19,14 +21,16 @@ const initialNodes = [
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
  
 export default function App() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [onNodesChange] = useNodesState([]);
+  const [onEdgesChange] = useEdgesState([]);
+
+  const { nodes, edges, setNodes, setEdges } = useRFMappings();
+
  
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) => setEdges((eds: Edge[]) => addEdge(params, eds)),
     [setEdges],
   );
- 
   return (
     <div style={{ width: '30vw', height: '100vh' }}>
       <ReactFlow

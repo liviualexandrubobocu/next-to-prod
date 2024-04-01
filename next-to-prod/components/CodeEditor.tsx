@@ -4,6 +4,8 @@ import MonacoEditor from 'react-monaco-editor';
 import { parse }  from '@mermaid-js/parser';
 
 import mermaid from 'mermaid';
+import mapToFlow from '../services/mapToFlow';
+import { useRFMappings } from '@/domains/mappings/state/reactFlowMappings';
 
 function traverse(vertex: any, visited: any, vertices: any, edges: any): any {
     if (visited[vertex]) {
@@ -18,9 +20,9 @@ function traverse(vertex: any, visited: any, vertices: any, edges: any): any {
   
     visited[vertex] = `out_${vertex.toLowerCase()}`;
     return `${visited[vertex]} = ${currentVertex.id}(${args})`;
-  }
+}
 
-  const parseGraph = async (mermaidText: string) => {
+const parseGraph = async (mermaidText: string) => {
     // Configure Mermaid to use the desired settings
     mermaid.initialize({
         startOnLoad: false,
@@ -39,11 +41,15 @@ const CodeEditor = () => {
     const code = 'graph TD;\n' +
     'A[Start] --> B{Is it working?};\n' +
    'B -->|Yes| C[Keep Doing Whatever];\n' +
-    'B -->|No| D[Fix it];\n' + 
-    'D --> B;\n';
+    'C -->|No| D[Fix it];\n' + 
+    'D --> A;\n';
     const options = {
         selectOnLineNumbers: true
       };
+    
+    const { setNodes, setEdges } = useRFMappings();
+    
+
     return (
             <MonacoEditor
               width="800"
@@ -53,9 +59,10 @@ const CodeEditor = () => {
               value={code}
               options={options}
               onChange={async (code: string)  => {
-                  console.log('code === ', code);
-                  const obj = await parseGraph(code)
-                  console.log(obj);
+                  const {vertices, edges} = await parseGraph(code);
+                  const { rfNodes, rfEdges } = mapToFlow(vertices, edges);
+                  setNodes(rfNodes);
+                  setEdges(rfEdges);
               }}
             />
     )
