@@ -1,12 +1,10 @@
 'use client';
-import ReactFlow, { MiniMap, Controls, useNodesState,
-    useEdgesState,
-    addEdge, applyEdgeChanges, applyNodeChanges,
-    Elements } from 'reactflow';
-import ClassNode from './ClassNode';
+import ReactFlow, { addEdge, applyEdgeChanges, applyNodeChanges } from 'reactflow';
 
 import React, { useCallback, useState } from 'react';
 import 'reactflow/dist/style.css';
+import StateMachineInitialStateNode from './StateMachineInitialStateNode';
+import StateMachineFinalStateNode from './StateMachineFinalStateNode';
 
 
 const rfStyle = {
@@ -14,17 +12,20 @@ const rfStyle = {
 };
 
 const initialNodes = [
-  { id: 'node-1', type: 'classNode', position: { x: 0, y: 0 }, data: { attributes: ['+foo'], methods: ['bar()'] } },
-  { id: 'node-2', type: 'classNode', position: { x: 100, y: 0 }, data: { attributes: ['+foo'], methods: ['bar()'] } }
+  { id: 'node-1', type: 'initialStateNode', position: { x: 0, y: 0 }, data: { name: "Initial State"} },
+  { id: 'node-2', type: 'finalStateNode', position: { x: 100, y: 0 }, data: { name: "Final State"} }
 ];
 const initialEdges = [
     { id: 'e1', source: 'node-1', target: 'node-2', type: 'smoothstep', label: 'contains 4' },
 ];
 // we define the nodeTypes outside of the component to prevent re-renderings
 // you could also use useMemo inside the component
-const nodeTypes = { classNode: ClassNode };
+const nodeTypes = { 
+    initialStateNode: StateMachineInitialStateNode,
+    finalStateNode: StateMachineFinalStateNode
+ };
 
-const ClassNodeFlow = () => {
+const StateMachineFlow = () => {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
 
@@ -55,4 +56,4 @@ const ClassNodeFlow = () => {
   );
 }
 
-export default ClassNodeFlow;
+export default StateMachineFlow;
